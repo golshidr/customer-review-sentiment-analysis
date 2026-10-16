@@ -7,7 +7,8 @@ This card covers the models trained in this repository. Two are recommended:
   is fast, small and fully interpretable.
 
 DistilBERT, RoBERTa-base and DeBERTa-v3-base were trained with the same procedure and are reported
-for comparison. All numbers come from `results/` and are explained in the [README](README.md).
+for comparison. All numbers come from `results/` and are explained in
+[docs/RESULTS.md](docs/RESULTS.md).
 
 ## Model details
 
