@@ -12,4 +12,4 @@ The package turns the original exploratory notebook into reusable, tested compon
 * :mod:`review_sentiment.error_analysis` - slice-based error analysis
 """
 
-__version__ = "0.2.0"
+__version__ = "1.0.0"

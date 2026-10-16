@@ -101,6 +101,7 @@ tables and figures can be rebuilt on a CPU in a few minutes. The step-by-step co
 - [docs/RESULTS.md](docs/RESULTS.md): full results, including the evaluation fix, significance
   tests, explanations, behavioural tests, calibration, error analysis, limitations and references.
 - [MODEL_CARD.md](MODEL_CARD.md): intended use, evaluation data, results and known limitations.
+- [CHANGELOG.md](CHANGELOG.md): release notes.
 - [notebooks/](notebooks/): the original exploratory notebook, reordered to run top to bottom.
 
 ## Project structure
@@ -117,7 +118,7 @@ customer-review-sentiment-analysis/
 ├── figures/                # figures used in the README and docs
 ├── docs/                   # detailed results and notes
 ├── tests/                  # pytest suite on synthetic data
-├── MODEL_CARD.md, LICENSE
+├── MODEL_CARD.md, CHANGELOG.md, LICENSE
 └── Makefile, pyproject.toml, requirements.txt, requirements-dev.txt
 ```
 

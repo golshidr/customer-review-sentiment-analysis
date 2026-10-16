@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "review-sentiment"
-version = "0.2.0"
+version = "1.0.0"
 description = "Sentiment analysis of reviews: TF-IDF baseline vs fine-tuned transformers, with explainability, robustness and cross-domain evaluation."
 readme = "README.md"
 requires-python = ">=3.11"
