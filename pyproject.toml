@@ -7,9 +7,15 @@ name = "review-sentiment"
 version = "0.2.0"
 description = "Sentiment analysis of reviews: TF-IDF baseline vs fine-tuned transformers, with explainability, robustness and cross-domain evaluation."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = "MIT"
 license-files = ["LICENSE"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
 authors = [{ name = "Golshid Ranjbaran" }]
 dependencies = [
     "numpy",
@@ -40,7 +46,7 @@ markers = ["slow: tests that download models or data (deselected in CI)"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
+target-version = "py311"
 src = ["src", "tests", "scripts", "app"]
 extend-exclude = ["notebooks"]
 
