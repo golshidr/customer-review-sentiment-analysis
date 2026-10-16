@@ -1,0 +1,40 @@
+# Pinned versions used to produce every result in this repository
+# (Python 3.11.x, Linux, NVIDIA driver 565 / CUDA 12.x, one A100 80GB).
+#
+# PyTorch is installed from the CUDA 12.6 wheel index:
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu126
+# For a CPU-only machine, use https://download.pytorch.org/whl/cpu instead.
+
+# core / classical pipeline
+numpy==2.4.6
+pandas==3.0.6
+pyarrow==26.0.0
+scikit-learn==1.9.1
+scipy==1.17.1
+matplotlib==3.11.2
+PyYAML==6.0.3
+joblib==1.6.0
+
+# transformers, explainability
+torch==2.8.0
+transformers==5.20.0
+tokenizers==0.23.3
+huggingface-hub==2.2.0
+datasets==5.1.0
+safetensors==0.8.0
+captum==0.9.0
+sentencepiece==0.2.2
+protobuf==7.36.2
+tqdm==4.70.1
+
+# demo app
+gradio==6.30.0
+
+# notebook
+ipykernel==7.4.0
+nbconvert==7.17.2
+nbformat==5.11.1
+
+# development
+pytest==9.1.1
+ruff==0.17.1

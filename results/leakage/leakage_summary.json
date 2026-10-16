@@ -1,0 +1,29 @@
+[
+  {
+    "protocol": "legacy_random",
+    "runs": 5,
+    "accuracy_mean": 0.8963599999999999,
+    "accuracy_std": 0.0025115732121521067,
+    "n_test": 10000.0,
+    "share_test_movie_in_train": 0.96254,
+    "exact_duplicates": 136.4
+  },
+  {
+    "protocol": "grouped_pooled",
+    "runs": 5,
+    "accuracy_mean": 0.8830794923723744,
+    "accuracy_std": 0.00483367414823623,
+    "n_test": 9880.0,
+    "share_test_movie_in_train": 0.0,
+    "exact_duplicates": 0.0
+  },
+  {
+    "protocol": "official",
+    "runs": 1,
+    "accuracy_mean": 0.8830244804437835,
+    "accuracy_std": 0.0,
+    "n_test": 24877.0,
+    "share_test_movie_in_train": 0.0009,
+    "exact_duplicates": 0.0
+  }
+]

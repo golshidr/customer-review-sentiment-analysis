@@ -1,0 +1,39 @@
+{
+  "n_reviews": 500,
+  "max_words": 200,
+  "ig_steps": 100,
+  "transformer": "deberta",
+  "classical": "tfidf_lr_tuned",
+  "ig_seconds_total": 741.7,
+  "ig_abs_convergence_delta_median": 0.27588534355163574,
+  "ig_relative_convergence_delta_median": 0.046415764376876625,
+  "results": [
+    {
+      "model": "tfidf_lr_tuned",
+      "method": "LR contribution",
+      "aopc": 0.5996554606490778
+    },
+    {
+      "model": "tfidf_lr_tuned",
+      "method": "random",
+      "aopc": 0.0394828359577185
+    },
+    {
+      "model": "deberta",
+      "method": "Integrated Gradients",
+      "aopc": 0.15985125936429093
+    },
+    {
+      "model": "deberta",
+      "method": "Gradient x Input",
+      "aopc": 0.046649889636483456
+    },
+    {
+      "model": "deberta",
+      "method": "random",
+      "aopc": 0.03600703141884279
+    }
+  ],
+  "spearman_lr_vs_ig_median": 0.07906996816976984,
+  "top5_overlap_lr_vs_ig_mean": 0.0952
+}

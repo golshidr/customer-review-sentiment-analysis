@@ -205,3 +205,20 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# --- project specific ---
+# downloaded/processed datasets (re-create with `make data`)
+data/
+# trained models and checkpoints (re-create with `make classical transformers seeds`)
+artifacts/
+*.joblib
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+# logs and caches
+logs/
+hf_cache/
+.ruff_cache/
+gradio_cached_examples/
+.gradio/

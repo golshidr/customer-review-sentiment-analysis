@@ -1,0 +1,12 @@
+protocol,seed,n_train,n_test,test_accuracy,test_exact_duplicates_of_train,test_reviews_with_movie_in_train,test_share_with_movie_in_train
+legacy_random,0,40000,10000,0.8983,140,9617,0.9617
+legacy_random,1,40000,10000,0.8944,149,9618,0.9618
+legacy_random,2,40000,10000,0.8931,127,9639,0.9639
+legacy_random,3,40000,10000,0.8971,126,9593,0.9593
+legacy_random,4,40000,10000,0.8989,140,9660,0.966
+grouped_pooled,0,39759,9841,0.8866985062493649,0,0,0.0
+grouped_pooled,1,39728,9911,0.8765008576329331,0,0,0.0
+grouped_pooled,2,39741,9887,0.8868210781834732,0,0,0.0
+grouped_pooled,3,39705,9909,0.8860631748915128,0,0,0.0
+grouped_pooled,4,39778,9852,0.8793138449045879,0,0,0.0
+official,0,24902,24877,0.8830244804437835,0,23,0.0009

@@ -1,0 +1,74 @@
+{
+  "model": "deberta_s43",
+  "split": {
+    "protocol": "official",
+    "n_train": 22416,
+    "n_val": 2486,
+    "n_test": 24877,
+    "removed_train_duplicates": 98,
+    "removed_test_duplicates_of_train": 123,
+    "test_exact_duplicates_of_train": 0,
+    "test_reviews_with_movie_in_train": 23,
+    "test_share_with_movie_in_train": 0.0009
+  },
+  "config": {
+    "name": "deberta_s43",
+    "model_name": "microsoft/deberta-v3-base",
+    "max_length": 512,
+    "truncation": "head",
+    "head_tokens": 128,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "epochs": 2,
+    "batch_size": 16,
+    "eval_batch_size": 128,
+    "warmup_ratio": 0.06,
+    "max_grad_norm": 1.0,
+    "seed": 43,
+    "bf16": true,
+    "max_train_samples": null,
+    "log_every": 200
+  },
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "history": [
+    {
+      "epoch": 1,
+      "val_accuracy": 0.9565567176186646,
+      "elapsed_s": 183.7
+    },
+    {
+      "epoch": 2,
+      "val_accuracy": 0.9577634754625906,
+      "elapsed_s": 365.4
+    }
+  ],
+  "best_val_accuracy": 0.9577634754625906,
+  "train_seconds": 366.7,
+  "n_parameters": 184423682,
+  "n_train": 22416,
+  "val": {
+    "n": 2486,
+    "accuracy": 0.9577634754625906,
+    "precision": 0.9552715654952076,
+    "recall": 0.9606425702811245,
+    "f1": 0.9579495394473369,
+    "macro_f1": 0.9577626485115471,
+    "roc_auc": 0.9887275127908896,
+    "log_loss": 0.1729417571839215,
+    "brier": 0.037729082035392186,
+    "ece": 0.03553895649381186
+  },
+  "test": {
+    "n": 24877,
+    "accuracy": 0.9622542911122723,
+    "precision": 0.9566078074273497,
+    "recall": 0.9686497754971135,
+    "f1": 0.9625911318274172,
+    "macro_f1": 0.9622512305387035,
+    "roc_auc": 0.9924126472156963,
+    "log_loss": 0.13932293364269352,
+    "brier": 0.03269144826835543,
+    "ece": 0.027300134929882824
+  },
+  "test_examples_per_second_gpu": 541.1
+}

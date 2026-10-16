@@ -1,0 +1,1146 @@
+{
+  "tfidf_lr_original": [
+    {
+      "test": "simple_positive",
+      "type": "MFT",
+      "description": "'The {noun} was {pos}.' -> positive",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "simple_negative",
+      "type": "MFT",
+      "description": "'The {noun} was {neg}.' -> negative",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "negated_positive",
+      "type": "MFT",
+      "description": "'The {noun} was not {pos}.' -> negative",
+      "n": 128,
+      "failures": 126,
+      "failure_rate": 0.9844,
+      "examples": [
+        {
+          "text": "The movie was not good.",
+          "p_positive": 0.7889
+        },
+        {
+          "text": "The movie was not great.",
+          "p_positive": 0.9507
+        },
+        {
+          "text": "The movie was not excellent.",
+          "p_positive": 0.9426
+        }
+      ]
+    },
+    {
+      "test": "negated_negative",
+      "type": "MFT",
+      "description": "'The {noun} was not {neg}.' -> positive (lenient: may be neutral)",
+      "n": 128,
+      "failures": 128,
+      "failure_rate": 1.0,
+      "examples": [
+        {
+          "text": "The movie was not bad.",
+          "p_positive": 0.0308
+        },
+        {
+          "text": "The movie was not terrible.",
+          "p_positive": 0.0447
+        },
+        {
+          "text": "The movie was not awful.",
+          "p_positive": 0.029
+        }
+      ]
+    },
+    {
+      "test": "contrast_neg_then_pos",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",
+      "n": 64,
+      "failures": 64,
+      "failure_rate": 1.0,
+      "examples": [
+        {
+          "text": "I expected the movie to be bad, but it was good.",
+          "p_positive": 0.1376
+        },
+        {
+          "text": "I expected the movie to be terrible, but it was great.",
+          "p_positive": 0.2812
+        },
+        {
+          "text": "I expected the movie to be awful, but it was excellent.",
+          "p_positive": 0.3172
+        }
+      ]
+    },
+    {
+      "test": "contrast_pos_then_neg",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",
+      "n": 64,
+      "failures": 4,
+      "failure_rate": 0.0625,
+      "examples": [
+        {
+          "text": "I expected the movie to be great, but it was terrible.",
+          "p_positive": 0.5107
+        },
+        {
+          "text": "I expected the movie to be wonderful, but it was disappointing.",
+          "p_positive": 0.514
+        },
+        {
+          "text": "I expected the film to be great, but it was terrible.",
+          "p_positive": 0.6778
+        }
+      ]
+    },
+    {
+      "test": "typos_10pct",
+      "type": "INV",
+      "description": "swap adjacent letters in 10% of words; prediction should not flip",
+      "n": 1000,
+      "failures": 25,
+      "failure_rate": 0.025,
+      "examples": [
+        {
+          "text": "For a film made in Senegal, based, I guess loosely on Carmen, the book, by Prosper Merimee, this film doesn't achieve a mere resemblance of the story that has been made fmaous as an opera and as other films. Ms. Gai as the Karmen of the tilte is very good to look at. Her firey dancing smolders the s",
+          "p_positive": 0.4046,
+          "p_positive_before": 0.5027
+        },
+        {
+          "text": "Time tarvel is theoretical, so I can give the script some leeway. I also understand the concept that by changing jsut one variable, you can potentially change the way history unfolded. What I cannot understand, however, is the way the change in time unfolded. We are subjected to a series of \"timewav",
+          "p_positive": 0.5027,
+          "p_positive_before": 0.4862
+        },
+        {
+          "text": "To start with, I have done some further research on the film. Firslty, Jules Dassin directed and acted in this extremely imaginative and different film nior crime film. Secondly, This was a very low bduget film, created in the Rennaissance of the prime moemnt of film noir. Thirdly, the jewelers wher",
+          "p_positive": 0.4425,
+          "p_positive_before": 0.5122
+        }
+      ]
+    },
+    {
+      "test": "neutral_sentence",
+      "type": "INV",
+      "description": "append an irrelevant sentence; prediction should not flip",
+      "n": 1000,
+      "failures": 16,
+      "failure_rate": 0.016,
+      "examples": [
+        {
+          "text": "This review is long overdue, since I consider A Tale of Two Sisters to be the single greatest film ever made. I'll put this gem up against any movie in terms of screenplay, cinematography, acting, post-production, editing, directing, or any other aspect of film-making. It's practically perfect in al",
+          "p_positive": 0.5187,
+          "p_positive_before": 0.4979
+        },
+        {
+          "text": "This movie is very difficult to understand, why do the couple want to divorce ? No reason is given, we don't know anything about their life in Lisbon, and even nothing about Marie's job. We may only understand that a certain bore appeared in this life. We don't even know who took the initiative of a",
+          "p_positive": 0.5372,
+          "p_positive_before": 0.4764
+        },
+        {
+          "text": "The only conceivable flaw of this film is it's title!! Please stop comparing it to the first! I did in my previous review only to separate it from the first. If you haven't seen the movie and are curious, TOTALLY forget about the first and invent a different name for this. There is nothing alike and",
+          "p_positive": 0.5004,
+          "p_positive_before": 0.4336
+        }
+      ]
+    },
+    {
+      "test": "intensifier",
+      "type": "DIR",
+      "description": "add very/really/...; expected-class prob must not drop > 0.1",
+      "n": 128,
+      "failures": 3,
+      "failure_rate": 0.0234,
+      "examples": [
+        {
+          "text": "The movie was incredibly good.",
+          "p_positive": 0.6028
+        },
+        {
+          "text": "The movie was extremely enjoyable.",
+          "p_positive": 0.7303
+        },
+        {
+          "text": "The film was really impressive.",
+          "p_positive": 0.6171
+        }
+      ]
+    },
+    {
+      "test": "add_negative_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not rise by more than 0.1",
+      "n": 520,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_positive_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not fall by more than 0.1",
+      "n": 480,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    }
+  ],
+  "tfidf_lr_tuned": [
+    {
+      "test": "simple_positive",
+      "type": "MFT",
+      "description": "'The {noun} was {pos}.' -> positive",
+      "n": 64,
+      "failures": 2,
+      "failure_rate": 0.0312,
+      "examples": [
+        {
+          "text": "The movie was impressive.",
+          "p_positive": 0.2598
+        },
+        {
+          "text": "The staff was impressive.",
+          "p_positive": 0.4727
+        }
+      ]
+    },
+    {
+      "test": "simple_negative",
+      "type": "MFT",
+      "description": "'The {noun} was {neg}.' -> negative",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "negated_positive",
+      "type": "MFT",
+      "description": "'The {noun} was not {pos}.' -> negative",
+      "n": 128,
+      "failures": 114,
+      "failure_rate": 0.8906,
+      "examples": [
+        {
+          "text": "The movie was not great.",
+          "p_positive": 0.677
+        },
+        {
+          "text": "The movie was not excellent.",
+          "p_positive": 0.8462
+        },
+        {
+          "text": "The movie was not amazing.",
+          "p_positive": 0.6788
+        }
+      ]
+    },
+    {
+      "test": "negated_negative",
+      "type": "MFT",
+      "description": "'The {noun} was not {neg}.' -> positive (lenient: may be neutral)",
+      "n": 128,
+      "failures": 128,
+      "failure_rate": 1.0,
+      "examples": [
+        {
+          "text": "The movie was not bad.",
+          "p_positive": 0.0318
+        },
+        {
+          "text": "The movie was not terrible.",
+          "p_positive": 0.0127
+        },
+        {
+          "text": "The movie was not awful.",
+          "p_positive": 0.0008
+        }
+      ]
+    },
+    {
+      "test": "contrast_neg_then_pos",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",
+      "n": 64,
+      "failures": 38,
+      "failure_rate": 0.5938,
+      "examples": [
+        {
+          "text": "I expected the movie to be bad, but it was good.",
+          "p_positive": 0.2841
+        },
+        {
+          "text": "I expected the movie to be horrible, but it was fantastic.",
+          "p_positive": 0.4474
+        },
+        {
+          "text": "I expected the movie to be mediocre, but it was impressive.",
+          "p_positive": 0.305
+        }
+      ]
+    },
+    {
+      "test": "contrast_pos_then_neg",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "typos_10pct",
+      "type": "INV",
+      "description": "swap adjacent letters in 10% of words; prediction should not flip",
+      "n": 1000,
+      "failures": 25,
+      "failure_rate": 0.025,
+      "examples": [
+        {
+          "text": "Don't be fooled by the other reviewers. Although this film contains an impressive array of talent, the material tehy present leaves a graet deal to be desired. Nat King Cole's 3 numbers are pretty lame and not even close to his later efforts, though he does impress with his piano playing. 'Moms' Mab",
+          "p_positive": 0.4421,
+          "p_positive_before": 0.6228
+        },
+        {
+          "text": "The only conceivable flaw of this film is it's title!! Pelase stop comparing it to the first! I did in my previous review only to separate it from the first. If you haven't seen the movie and are curious, TOTALLY forget about the first and invent a different name for this. There is nothing alike and",
+          "p_positive": 0.5349,
+          "p_positive_before": 0.4277
+        },
+        {
+          "text": "Usually, any movie with Steve Railsback in the laed is a good movie. However, this movie does not conform to that opinion. Lifeforce is a below avergae movie that is extremely confusing in the beginning (reminds me of Star Trek: TMP), but is able to pick things up a bit towards the end when London b",
+          "p_positive": 0.5147,
+          "p_positive_before": 0.4233
+        }
+      ]
+    },
+    {
+      "test": "neutral_sentence",
+      "type": "INV",
+      "description": "append an irrelevant sentence; prediction should not flip",
+      "n": 1000,
+      "failures": 25,
+      "failure_rate": 0.025,
+      "examples": [
+        {
+          "text": "Considering the subject matter, I thought that this film would at least be enjoyable, if stopping somewhat short of a masterpiece. I was wrong. I was still waiting for something to happen and it finished - I thought that the finale was the bit that happened before it got exciting. The only reason I ",
+          "p_positive": 0.5172,
+          "p_positive_before": 0.4692
+        },
+        {
+          "text": "Having enjoyed Neil Gaiman's writing (especially his collaboration with Yoshitaka Amano in \"The Dream Hunters\") in the past, I figured Mirrormask to be a sure thing and was very disappointed. The beginning, live-action section of the movie was intriguing enough. The relationships between the charact",
+          "p_positive": 0.5917,
+          "p_positive_before": 0.4538
+        },
+        {
+          "text": "Dustin Hoffman's debut feature isn't as bad as it's reputed to be; a Spanish/Italian co-production filmed in Italy with the director using the pseudonym \"Dan Ash\"(!), the film is uneven but generally diverting and deals with a plethora of shady characters in search of a $1,000,000 hidden by gangster",
+          "p_positive": 0.5154,
+          "p_positive_before": 0.4204
+        }
+      ]
+    },
+    {
+      "test": "intensifier",
+      "type": "DIR",
+      "description": "add very/really/...; expected-class prob must not drop > 0.1",
+      "n": 128,
+      "failures": 22,
+      "failure_rate": 0.1719,
+      "examples": [
+        {
+          "text": "The movie was incredibly good.",
+          "p_positive": 0.2846
+        },
+        {
+          "text": "The movie was incredibly great.",
+          "p_positive": 0.6977
+        },
+        {
+          "text": "The movie was extremely amazing.",
+          "p_positive": 0.6967
+        }
+      ]
+    },
+    {
+      "test": "add_negative_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not rise by more than 0.1",
+      "n": 511,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_positive_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not fall by more than 0.1",
+      "n": 489,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    }
+  ],
+  "distilbert": [
+    {
+      "test": "simple_positive",
+      "type": "MFT",
+      "description": "'The {noun} was {pos}.' -> positive",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "simple_negative",
+      "type": "MFT",
+      "description": "'The {noun} was {neg}.' -> negative",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "negated_positive",
+      "type": "MFT",
+      "description": "'The {noun} was not {pos}.' -> negative",
+      "n": 128,
+      "failures": 2,
+      "failure_rate": 0.0156,
+      "examples": [
+        {
+          "text": "I didn't think the movie was excellent.",
+          "p_positive": 0.524
+        },
+        {
+          "text": "I didn't think the film was excellent.",
+          "p_positive": 0.6947
+        }
+      ]
+    },
+    {
+      "test": "negated_negative",
+      "type": "MFT",
+      "description": "'The {noun} was not {neg}.' -> positive (lenient: may be neutral)",
+      "n": 128,
+      "failures": 76,
+      "failure_rate": 0.5938,
+      "examples": [
+        {
+          "text": "The movie was not awful.",
+          "p_positive": 0.0833
+        },
+        {
+          "text": "The movie was not horrible.",
+          "p_positive": 0.2736
+        },
+        {
+          "text": "The movie was not poor.",
+          "p_positive": 0.4223
+        }
+      ]
+    },
+    {
+      "test": "contrast_neg_then_pos",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "contrast_pos_then_neg",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "typos_10pct",
+      "type": "INV",
+      "description": "swap adjacent letters in 10% of words; prediction should not flip",
+      "n": 1000,
+      "failures": 39,
+      "failure_rate": 0.039,
+      "examples": [
+        {
+          "text": "Considering the subject matter, I thought that this film would at least be enjoyable, if stopping somehwat short of a masterpiece. I was wrong. I was stlil waiting for something to happen and it fiinshed - I thought that the finale was the bit that happened before it got exciting. The only reason I ",
+          "p_positive": 0.0134,
+          "p_positive_before": 0.931
+        },
+        {
+          "text": "Greedy land baron in the tiny western town of Prairie City wants all the ranchers off their land, using intimidation tactics and arosn to get them to vacate; seems the town is swimming atop oil, and when a Swedish farmer refuses to leave, he's mowed dwon by the baron's hired gun. The farmer's seafar",
+          "p_positive": 0.0507,
+          "p_positive_before": 0.7621
+        },
+        {
+          "text": "These cartoon writers are unrelenting with their corny (and fun) puns. The first shot we see in hree is an island prison with the following written above its big gates: \"Alka-Fizz Prison - No Noose Is Good Noose.\" Insdie the prison, the first sign we see is \"Welcome: have a seat.\" They then show an ",
+          "p_positive": 0.9446,
+          "p_positive_before": 0.2814
+        }
+      ]
+    },
+    {
+      "test": "neutral_sentence",
+      "type": "INV",
+      "description": "append an irrelevant sentence; prediction should not flip",
+      "n": 1000,
+      "failures": 25,
+      "failure_rate": 0.025,
+      "examples": [
+        {
+          "text": "One of the most pleasant surprises of this early 3-strip Technicolor short was that a ballet dancer that appears here was named Maria Gambarelli! I half wondered if Blake Edwards was naming the character played by Elke Sommer in A Shot in the Dark after this now-forgotten performer (though the spell",
+          "p_positive": 0.5866,
+          "p_positive_before": 0.0119
+        },
+        {
+          "text": "I saw this ego-centric \"effort\" at achieving a film of \"epic\" status in the company of several native Russian family members. Five people gave 5 different reactions, from Mikhalkov worship to my cynicism. I saw a movie that looked like Mikhalkov took a lot of \"Canal +\" money, put some of it in his (",
+          "p_positive": 0.9454,
+          "p_positive_before": 0.0252
+        },
+        {
+          "text": "Not just the money we paid to rent it or actually go to the movies. I'm talking about how big productions companies waste so much money in things that actually are boring and not to talk about ridiculous. With the millions they used to make a movie like this, because I don't think the actors here wo",
+          "p_positive": 0.8382,
+          "p_positive_before": 0.0056
+        }
+      ]
+    },
+    {
+      "test": "intensifier",
+      "type": "DIR",
+      "description": "add very/really/...; expected-class prob must not drop > 0.1",
+      "n": 128,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_negative_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not rise by more than 0.1",
+      "n": 509,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_positive_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not fall by more than 0.1",
+      "n": 491,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    }
+  ],
+  "roberta": [
+    {
+      "test": "simple_positive",
+      "type": "MFT",
+      "description": "'The {noun} was {pos}.' -> positive",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "simple_negative",
+      "type": "MFT",
+      "description": "'The {noun} was {neg}.' -> negative",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "negated_positive",
+      "type": "MFT",
+      "description": "'The {noun} was not {pos}.' -> negative",
+      "n": 128,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "negated_negative",
+      "type": "MFT",
+      "description": "'The {noun} was not {neg}.' -> positive (lenient: may be neutral)",
+      "n": 128,
+      "failures": 72,
+      "failure_rate": 0.5625,
+      "examples": [
+        {
+          "text": "The movie was not bad.",
+          "p_positive": 0.4217
+        },
+        {
+          "text": "The movie was not terrible.",
+          "p_positive": 0.011
+        },
+        {
+          "text": "The movie was not awful.",
+          "p_positive": 0.0141
+        }
+      ]
+    },
+    {
+      "test": "contrast_neg_then_pos",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "contrast_pos_then_neg",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "typos_10pct",
+      "type": "INV",
+      "description": "swap adjacent letters in 10% of words; prediction should not flip",
+      "n": 1000,
+      "failures": 22,
+      "failure_rate": 0.022,
+      "examples": [
+        {
+          "text": "One of the msot pleasant sruprises of this early 3-strip Technicolor short was that a ballet dancer that appears here was named Maria Gambarelli! I half wondered if Blake Edwards was naming the character played by Elke Sommer in A Shot in the Dark after this now-forgotten performer (though the spell",
+          "p_positive": 0.291,
+          "p_positive_before": 0.5478
+        },
+        {
+          "text": "i was flipping through the channels and had to stop and laugh when i came across this movie. It was so clearly about teens in the early 80s, and i called my mom \"hahaha, turn to chnanel such and such, the kid totally looks like if dad were a kid\". Um. Yeah. Turns out tihs movie is about my dad & his",
+          "p_positive": 0.0405,
+          "p_positive_before": 0.977
+        },
+        {
+          "text": "Jack Brooks (Trevor Matthews) is a college student wtih some severe agner issues. His family was brutally murdered when he was a child by a monster, and now he taeks out his anger on everything and everyone. So when his professor (Robert Englund) begins to show signs of monsterism, he learns he has ",
+          "p_positive": 0.0157,
+          "p_positive_before": 0.57
+        }
+      ]
+    },
+    {
+      "test": "neutral_sentence",
+      "type": "INV",
+      "description": "append an irrelevant sentence; prediction should not flip",
+      "n": 1000,
+      "failures": 9,
+      "failure_rate": 0.009,
+      "examples": [
+        {
+          "text": "Dustin Hoffman's debut feature isn't as bad as it's reputed to be; a Spanish/Italian co-production filmed in Italy with the director using the pseudonym \"Dan Ash\"(!), the film is uneven but generally diverting and deals with a plethora of shady characters in search of a $1,000,000 hidden by gangster",
+          "p_positive": 0.6192,
+          "p_positive_before": 0.1722
+        },
+        {
+          "text": "You got to see it to believe it. Shot in Hollywood on the strip in the middle of the sleazy, anything goes 70s, this cheaply made flick must of really packed the inner city theatres back in the day. Then again, I bet it had a one week run. Actually, its pretty hilarious. The acting is dreadful, the ",
+          "p_positive": 0.2621,
+          "p_positive_before": 0.9279
+        },
+        {
+          "text": "This is a silly spoof of private eye thrillers as a novelist(Michael Cain)is called upon to 'ghostwrite' an autobiography of a colorful, waning Hollywood star(Mickey Rooney). At times silliness becomes obnoxious. This is not Cain at his best. Rooney is way over the top. Notable support from Lizabeth",
+          "p_positive": 0.8941,
+          "p_positive_before": 0.0132
+        }
+      ]
+    },
+    {
+      "test": "intensifier",
+      "type": "DIR",
+      "description": "add very/really/...; expected-class prob must not drop > 0.1",
+      "n": 128,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_negative_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not rise by more than 0.1",
+      "n": 511,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_positive_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not fall by more than 0.1",
+      "n": 489,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    }
+  ],
+  "roberta_head_tail": [
+    {
+      "test": "simple_positive",
+      "type": "MFT",
+      "description": "'The {noun} was {pos}.' -> positive",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "simple_negative",
+      "type": "MFT",
+      "description": "'The {noun} was {neg}.' -> negative",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "negated_positive",
+      "type": "MFT",
+      "description": "'The {noun} was not {pos}.' -> negative",
+      "n": 128,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "negated_negative",
+      "type": "MFT",
+      "description": "'The {noun} was not {neg}.' -> positive (lenient: may be neutral)",
+      "n": 128,
+      "failures": 85,
+      "failure_rate": 0.6641,
+      "examples": [
+        {
+          "text": "The movie was not bad.",
+          "p_positive": 0.2302
+        },
+        {
+          "text": "The movie was not terrible.",
+          "p_positive": 0.0105
+        },
+        {
+          "text": "The movie was not awful.",
+          "p_positive": 0.0096
+        }
+      ]
+    },
+    {
+      "test": "contrast_neg_then_pos",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "contrast_pos_then_neg",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "typos_10pct",
+      "type": "INV",
+      "description": "swap adjacent letters in 10% of words; prediction should not flip",
+      "n": 1000,
+      "failures": 13,
+      "failure_rate": 0.013,
+      "examples": [
+        {
+          "text": "Director Kinji Fukasaku is perhaps bset known, in his homeland at least, for his Japanese gangtser films, a series with which this movie shares a number of characteristics. Violence and political intrigue are themes throughout both Shogun's Samurai and Battles Witohut Honor and Humanity, and both fe",
+          "p_positive": 0.0933,
+          "p_positive_before": 0.7889
+        },
+        {
+          "text": "One wonders about the state of a society that produce a father like Albret T. Fitzgerald, who we first meet on a plane, as he is heading towrad the place he abandoned a lnog time ago, and where he left a wfie and a child who is now accused of murdering a mentally challenged boy. When we first see hi",
+          "p_positive": 0.149,
+          "p_positive_before": 0.9904
+        },
+        {
+          "text": "The SF premise isn't unique (although it pretty much was back then), but the focus is a completely different one than in other artificial reality films. Especially during the first part it is an elaborate crime picture, that uses the SF premise to tell an unusual crime story in which the forced dete",
+          "p_positive": 0.0163,
+          "p_positive_before": 0.989
+        }
+      ]
+    },
+    {
+      "test": "neutral_sentence",
+      "type": "INV",
+      "description": "append an irrelevant sentence; prediction should not flip",
+      "n": 1000,
+      "failures": 5,
+      "failure_rate": 0.005,
+      "examples": [
+        {
+          "text": "This movie is a window on the world of Britain in 1973 - a world of holiday camps, fags and birds. I was actually at Pontins Prestatyn while this was being filmed, so it's fascinating to see where I holidayed as a kid, and what a world we have left behind. The 'plot', such as it is, concerns Stan an",
+          "p_positive": 0.8988,
+          "p_positive_before": 0.2207
+        },
+        {
+          "text": "Not only Why? But \"What were they thinking?\" This must have been some sort of payback to Gus Van Sant, because this is one of those odd movies that never should have been (re) made. It purports to be Hitchcocks film frame by frame, but without the magic or the tension or the great film making. Rent ",
+          "p_positive": 0.6518,
+          "p_positive_before": 0.0221
+        },
+        {
+          "text": "I'm from Phoenix city and the first time i saw this movie and read the book it only confirmed the stories i had heard all of my life. i asked my grandfather about the mob and he told me that when he got back from fighting in the pacific theatre he started up a CPA firm that is know the largest in th",
+          "p_positive": 0.4461,
+          "p_positive_before": 0.8349
+        }
+      ]
+    },
+    {
+      "test": "intensifier",
+      "type": "DIR",
+      "description": "add very/really/...; expected-class prob must not drop > 0.1",
+      "n": 128,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_negative_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not rise by more than 0.1",
+      "n": 501,
+      "failures": 1,
+      "failure_rate": 0.002,
+      "examples": [
+        {
+          "text": "i was having a horrid day but this movie grabbed me, and i couldn't put it down until the end... and i had forgotten about my horrid day. and the ending... by the way... where is the sequel!!! the budget is obviously extremely low... but ... look what they did with it! it reminds me of a play... the",
+          "p_positive": 0.9768
+        }
+      ]
+    },
+    {
+      "test": "add_positive_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not fall by more than 0.1",
+      "n": 499,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    }
+  ],
+  "deberta": [
+    {
+      "test": "simple_positive",
+      "type": "MFT",
+      "description": "'The {noun} was {pos}.' -> positive",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "simple_negative",
+      "type": "MFT",
+      "description": "'The {noun} was {neg}.' -> negative",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "negated_positive",
+      "type": "MFT",
+      "description": "'The {noun} was not {pos}.' -> negative",
+      "n": 128,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "negated_negative",
+      "type": "MFT",
+      "description": "'The {noun} was not {neg}.' -> positive (lenient: may be neutral)",
+      "n": 128,
+      "failures": 16,
+      "failure_rate": 0.125,
+      "examples": [
+        {
+          "text": "The product was not terrible.",
+          "p_positive": 0.43
+        },
+        {
+          "text": "The service was not terrible.",
+          "p_positive": 0.4833
+        },
+        {
+          "text": "The food was not terrible.",
+          "p_positive": 0.4274
+        }
+      ]
+    },
+    {
+      "test": "contrast_neg_then_pos",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "contrast_pos_then_neg",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "typos_10pct",
+      "type": "INV",
+      "description": "swap adjacent letters in 10% of words; prediction should not flip",
+      "n": 1000,
+      "failures": 17,
+      "failure_rate": 0.017,
+      "examples": [
+        {
+          "text": "i was flipping through the channels and had to stop and laugh when i came across this movie. It was so clearly about teens in the early 80s, and i called my mom \"hahaha, turn to chnanel such and such, the kid totally looks like if dad were a kid\". Um. Yeah. Turns out tihs movie is about my dad & his",
+          "p_positive": 0.3174,
+          "p_positive_before": 0.9887
+        },
+        {
+          "text": "Cedric Klapisch's movie L'AUBERGE ESPAGNOLE is easy, breezy cahrm wrapped in nostalgia for our yougner yaers and attractive youths. At its core, it's the feature-length presentation of the long-running MTV reality soap opera known as \"The Real World\" in which, as its motto goes: \"This is the 'true s",
+          "p_positive": 0.1495,
+          "p_positive_before": 0.8864
+        },
+        {
+          "text": "This is the most frightening film ever made in Hollywood. It is a cautionray tale of how to take a European masterpiece and suck the lfie of of it until it is a dry husk like an insect carcass on the the windowsill. Frightening because it reveals how the world of Hollywood really works: ignorant mon",
+          "p_positive": 0.5645,
+          "p_positive_before": 0.0188
+        }
+      ]
+    },
+    {
+      "test": "neutral_sentence",
+      "type": "INV",
+      "description": "append an irrelevant sentence; prediction should not flip",
+      "n": 1000,
+      "failures": 4,
+      "failure_rate": 0.004,
+      "examples": [
+        {
+          "text": "Director Kinji Fukasaku is perhaps best known, in his homeland at least, for his Japanese gangster films, a series with which this movie shares a number of characteristics. Violence and political intrigue are themes throughout both Shogun's Samurai and Battles Without Honor and Humanity, and both fe",
+          "p_positive": 0.8081,
+          "p_positive_before": 0.3337
+        },
+        {
+          "text": "Jack Brooks (Trevor Matthews) is a college student with some severe anger issues. His family was brutally murdered when he was a child by a monster, and now he takes out his anger on everything and everyone. So when his professor (Robert Englund) begins to show signs of monsterism, he learns he has ",
+          "p_positive": 0.9284,
+          "p_positive_before": 0.0882
+        },
+        {
+          "text": "This is a clever and entertaining film about the backroom battling that went on to choose a successor to Johnny Carson on the Tonight Show. However, the movie's ultimate thesis, that David Letterman's superior comedic talents were overlooked because of his controversial nature, and the show diminish",
+          "p_positive": 0.9247,
+          "p_positive_before": 0.037
+        }
+      ]
+    },
+    {
+      "test": "intensifier",
+      "type": "DIR",
+      "description": "add very/really/...; expected-class prob must not drop > 0.1",
+      "n": 128,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_negative_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not rise by more than 0.1",
+      "n": 504,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_positive_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not fall by more than 0.1",
+      "n": 496,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    }
+  ],
+  "deberta_large": [
+    {
+      "test": "simple_positive",
+      "type": "MFT",
+      "description": "'The {noun} was {pos}.' -> positive",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "simple_negative",
+      "type": "MFT",
+      "description": "'The {noun} was {neg}.' -> negative",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "negated_positive",
+      "type": "MFT",
+      "description": "'The {noun} was not {pos}.' -> negative",
+      "n": 128,
+      "failures": 19,
+      "failure_rate": 0.1484,
+      "examples": [
+        {
+          "text": "The film was not excellent.",
+          "p_positive": 0.83
+        },
+        {
+          "text": "The product was not excellent.",
+          "p_positive": 0.5566
+        },
+        {
+          "text": "The phone was not excellent.",
+          "p_positive": 0.8973
+        }
+      ]
+    },
+    {
+      "test": "negated_negative",
+      "type": "MFT",
+      "description": "'The {noun} was not {neg}.' -> positive (lenient: may be neutral)",
+      "n": 128,
+      "failures": 44,
+      "failure_rate": 0.3438,
+      "examples": [
+        {
+          "text": "The product was not terrible.",
+          "p_positive": 0.183
+        },
+        {
+          "text": "The product was not awful.",
+          "p_positive": 0.1678
+        },
+        {
+          "text": "The product was not horrible.",
+          "p_positive": 0.1505
+        }
+      ]
+    },
+    {
+      "test": "contrast_neg_then_pos",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "contrast_pos_then_neg",
+      "type": "MFT",
+      "description": "'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",
+      "n": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "typos_10pct",
+      "type": "INV",
+      "description": "swap adjacent letters in 10% of words; prediction should not flip",
+      "n": 1000,
+      "failures": 2,
+      "failure_rate": 0.002,
+      "examples": [
+        {
+          "text": "I've already commented on this film (under the name TheLegendaryWD). But I see there are others who have commented since. All I can say is: WHAT THE F**K!?\". I cannot believe that a whole 16 people have commented on this film or even seen this movie. Add to taht the fact that a couple give it great ",
+          "p_positive": 0.0077,
+          "p_positive_before": 0.957
+        },
+        {
+          "text": "First of all , you sholud watch this only if you don't mind the lack of subtitles , pornography , kinky sex and utter , horrifying and truly shocking depravity . I mentioned kinky sex , but to call sex in the second half of the moive \" kinky \" would be a great understatement . It's more like a punch",
+          "p_positive": 0.4939,
+          "p_positive_before": 0.9736
+        }
+      ]
+    },
+    {
+      "test": "neutral_sentence",
+      "type": "INV",
+      "description": "append an irrelevant sentence; prediction should not flip",
+      "n": 1000,
+      "failures": 4,
+      "failure_rate": 0.004,
+      "examples": [
+        {
+          "text": "Jack Brooks (Trevor Matthews) is a college student with some severe anger issues. His family was brutally murdered when he was a child by a monster, and now he takes out his anger on everything and everyone. So when his professor (Robert Englund) begins to show signs of monsterism, he learns he has ",
+          "p_positive": 0.9367,
+          "p_positive_before": 0.0157
+        },
+        {
+          "text": "A depressed creepy teenager does many bad things to a socially active older lady who does not like to use shades or drapes in her windows. He steels assorted things from her, peeps at her, does prank calls, and plays assorted unpleasant tricks on her. Oddly, he keeps none of this a secret from her. ",
+          "p_positive": 0.6859,
+          "p_positive_before": 0.0284
+        },
+        {
+          "text": "This is a clever and entertaining film about the backroom battling that went on to choose a successor to Johnny Carson on the Tonight Show. However, the movie's ultimate thesis, that David Letterman's superior comedic talents were overlooked because of his controversial nature, and the show diminish",
+          "p_positive": 0.9831,
+          "p_positive_before": 0.1264
+        }
+      ]
+    },
+    {
+      "test": "intensifier",
+      "type": "DIR",
+      "description": "add very/really/...; expected-class prob must not drop > 0.1",
+      "n": 128,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_negative_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not rise by more than 0.1",
+      "n": 510,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    },
+    {
+      "test": "add_positive_sentence",
+      "type": "DIR",
+      "description": "P(positive) must not fall by more than 0.1",
+      "n": 490,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "examples": []
+    }
+  ]
+}

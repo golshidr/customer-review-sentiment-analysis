@@ -1,0 +1,13 @@
+# DeBERTa-v3-large (435M parameters): the largest model tried here.
+name: deberta_large
+model_name: microsoft/deberta-v3-large
+max_length: 512
+truncation: head
+learning_rate: 1.0e-5
+weight_decay: 0.01
+epochs: 2
+batch_size: 16
+eval_batch_size: 64
+warmup_ratio: 0.1
+seed: 42
+bf16: true

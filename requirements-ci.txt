@@ -1,0 +1,11 @@
+# Minimal CPU-only set for CI (lint + unit tests). No PyTorch or model downloads needed.
+numpy==2.4.6
+pandas==3.0.6
+pyarrow==26.0.0
+scikit-learn==1.9.1
+scipy==1.17.1
+matplotlib==3.11.2
+PyYAML==6.0.3
+joblib==1.6.0
+pytest==9.1.1
+ruff==0.17.1

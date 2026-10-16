@@ -1,0 +1,74 @@
+{
+  "model": "distilbert",
+  "split": {
+    "protocol": "official",
+    "n_train": 22416,
+    "n_val": 2486,
+    "n_test": 24877,
+    "removed_train_duplicates": 98,
+    "removed_test_duplicates_of_train": 123,
+    "test_exact_duplicates_of_train": 0,
+    "test_reviews_with_movie_in_train": 23,
+    "test_share_with_movie_in_train": 0.0009
+  },
+  "config": {
+    "name": "distilbert",
+    "model_name": "distilbert-base-uncased",
+    "max_length": 512,
+    "truncation": "head",
+    "head_tokens": 128,
+    "learning_rate": 3e-05,
+    "weight_decay": 0.01,
+    "epochs": 2,
+    "batch_size": 16,
+    "eval_batch_size": 128,
+    "warmup_ratio": 0.06,
+    "max_grad_norm": 1.0,
+    "seed": 42,
+    "bf16": true,
+    "max_train_samples": null,
+    "log_every": 200
+  },
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "history": [
+    {
+      "epoch": 1,
+      "val_accuracy": 0.914320193081255,
+      "elapsed_s": 33.8
+    },
+    {
+      "epoch": 2,
+      "val_accuracy": 0.9207562349155269,
+      "elapsed_s": 72.2
+    }
+  ],
+  "best_val_accuracy": 0.9207562349155269,
+  "train_seconds": 72.8,
+  "n_parameters": 66955010,
+  "n_train": 22416,
+  "val": {
+    "n": 2486,
+    "accuracy": 0.9207562349155269,
+    "precision": 0.9239482200647249,
+    "recall": 0.9172690763052209,
+    "f1": 0.920596533655784,
+    "macro_f1": 0.9207559143590041,
+    "roc_auc": 0.972792701830691,
+    "log_loss": 0.28671923852089015,
+    "brier": 0.06841055187796993,
+    "ece": 0.05732477220376233
+  },
+  "test": {
+    "n": 24877,
+    "accuracy": 0.9315029947340917,
+    "precision": 0.9292091836734694,
+    "recall": 0.9345734445157152,
+    "f1": 0.9318835944995203,
+    "macro_f1": 0.931500856187427,
+    "roc_auc": 0.9802055758466075,
+    "log_loss": 0.24224730760354696,
+    "brier": 0.058998111411981,
+    "ece": 0.048269655104999094
+  },
+  "test_examples_per_second_gpu": 2969.3
+}

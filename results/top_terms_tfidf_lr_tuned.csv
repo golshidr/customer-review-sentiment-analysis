@@ -1,0 +1,31 @@
+term,weight,direction
+great,9.665919017746672,positive
+excellent,8.60343824136605,positive
+perfect,7.3217746222112865,positive
+wonderful,6.7988019661978765,positive
+amazing,5.892278158468753,positive
+superb,5.378558307814346,positive
+loved,5.2352297559393035,positive
+today,5.167194506309313,positive
+fun,5.130803393590002,positive
+the best,4.865479452657645,positive
+brilliant,4.779681235258261,positive
+best,4.765005230853456,positive
+enjoyable,4.6745736425136695,positive
+enjoyed,4.485654671326204,positive
+favorite,4.463470612604288,positive
+worst,-10.027342479859458,negative
+bad,-9.778819811453507,negative
+awful,-9.307916081219657,negative
+boring,-8.176936008342238,negative
+the worst,-8.042882847472447,negative
+waste,-7.501482978562429,negative
+poor,-7.433738506563928,negative
+terrible,-6.824366730438451,negative
+poorly,-6.155417792456586,negative
+worse,-6.091002340829564,negative
+horrible,-6.020312256698104,negative
+disappointing,-5.9825102087722195,negative
+dull,-5.915847808787945,negative
+unfortunately,-5.569878457115765,negative
+nothing,-5.54090183378636,negative

@@ -1,0 +1,4 @@
+protocol,runs,accuracy_mean,accuracy_std,n_test,share_test_movie_in_train,exact_duplicates
+legacy_random,5,0.8963599999999999,0.0025115732121521067,10000.0,0.96254,136.4
+grouped_pooled,5,0.8830794923723744,0.00483367414823623,9880.0,0.0,0.0
+official,1,0.8830244804437835,0.0,24877.0,0.0009,0.0

@@ -1,0 +1,78 @@
+model,test,type,description,n,failures,failure_rate
+tfidf_lr_original,simple_positive,MFT,'The {noun} was {pos}.' -> positive,64,0,0.0
+tfidf_lr_original,simple_negative,MFT,'The {noun} was {neg}.' -> negative,64,0,0.0
+tfidf_lr_original,negated_positive,MFT,'The {noun} was not {pos}.' -> negative,128,126,0.9844
+tfidf_lr_original,negated_negative,MFT,'The {noun} was not {neg}.' -> positive (lenient: may be neutral),128,128,1.0
+tfidf_lr_original,contrast_neg_then_pos,MFT,"'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",64,64,1.0
+tfidf_lr_original,contrast_pos_then_neg,MFT,"'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",64,4,0.0625
+tfidf_lr_original,typos_10pct,INV,swap adjacent letters in 10% of words; prediction should not flip,1000,25,0.025
+tfidf_lr_original,neutral_sentence,INV,append an irrelevant sentence; prediction should not flip,1000,16,0.016
+tfidf_lr_original,intensifier,DIR,add very/really/...; expected-class prob must not drop > 0.1,128,3,0.0234
+tfidf_lr_original,add_negative_sentence,DIR,P(positive) must not rise by more than 0.1,520,0,0.0
+tfidf_lr_original,add_positive_sentence,DIR,P(positive) must not fall by more than 0.1,480,0,0.0
+tfidf_lr_tuned,simple_positive,MFT,'The {noun} was {pos}.' -> positive,64,2,0.0312
+tfidf_lr_tuned,simple_negative,MFT,'The {noun} was {neg}.' -> negative,64,0,0.0
+tfidf_lr_tuned,negated_positive,MFT,'The {noun} was not {pos}.' -> negative,128,114,0.8906
+tfidf_lr_tuned,negated_negative,MFT,'The {noun} was not {neg}.' -> positive (lenient: may be neutral),128,128,1.0
+tfidf_lr_tuned,contrast_neg_then_pos,MFT,"'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",64,38,0.5938
+tfidf_lr_tuned,contrast_pos_then_neg,MFT,"'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",64,0,0.0
+tfidf_lr_tuned,typos_10pct,INV,swap adjacent letters in 10% of words; prediction should not flip,1000,25,0.025
+tfidf_lr_tuned,neutral_sentence,INV,append an irrelevant sentence; prediction should not flip,1000,25,0.025
+tfidf_lr_tuned,intensifier,DIR,add very/really/...; expected-class prob must not drop > 0.1,128,22,0.1719
+tfidf_lr_tuned,add_negative_sentence,DIR,P(positive) must not rise by more than 0.1,511,0,0.0
+tfidf_lr_tuned,add_positive_sentence,DIR,P(positive) must not fall by more than 0.1,489,0,0.0
+distilbert,simple_positive,MFT,'The {noun} was {pos}.' -> positive,64,0,0.0
+distilbert,simple_negative,MFT,'The {noun} was {neg}.' -> negative,64,0,0.0
+distilbert,negated_positive,MFT,'The {noun} was not {pos}.' -> negative,128,2,0.0156
+distilbert,negated_negative,MFT,'The {noun} was not {neg}.' -> positive (lenient: may be neutral),128,76,0.5938
+distilbert,contrast_neg_then_pos,MFT,"'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",64,0,0.0
+distilbert,contrast_pos_then_neg,MFT,"'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",64,0,0.0
+distilbert,typos_10pct,INV,swap adjacent letters in 10% of words; prediction should not flip,1000,39,0.039
+distilbert,neutral_sentence,INV,append an irrelevant sentence; prediction should not flip,1000,25,0.025
+distilbert,intensifier,DIR,add very/really/...; expected-class prob must not drop > 0.1,128,0,0.0
+distilbert,add_negative_sentence,DIR,P(positive) must not rise by more than 0.1,509,0,0.0
+distilbert,add_positive_sentence,DIR,P(positive) must not fall by more than 0.1,491,0,0.0
+roberta,simple_positive,MFT,'The {noun} was {pos}.' -> positive,64,0,0.0
+roberta,simple_negative,MFT,'The {noun} was {neg}.' -> negative,64,0,0.0
+roberta,negated_positive,MFT,'The {noun} was not {pos}.' -> negative,128,0,0.0
+roberta,negated_negative,MFT,'The {noun} was not {neg}.' -> positive (lenient: may be neutral),128,72,0.5625
+roberta,contrast_neg_then_pos,MFT,"'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",64,0,0.0
+roberta,contrast_pos_then_neg,MFT,"'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",64,0,0.0
+roberta,typos_10pct,INV,swap adjacent letters in 10% of words; prediction should not flip,1000,22,0.022
+roberta,neutral_sentence,INV,append an irrelevant sentence; prediction should not flip,1000,9,0.009
+roberta,intensifier,DIR,add very/really/...; expected-class prob must not drop > 0.1,128,0,0.0
+roberta,add_negative_sentence,DIR,P(positive) must not rise by more than 0.1,511,0,0.0
+roberta,add_positive_sentence,DIR,P(positive) must not fall by more than 0.1,489,0,0.0
+roberta_head_tail,simple_positive,MFT,'The {noun} was {pos}.' -> positive,64,0,0.0
+roberta_head_tail,simple_negative,MFT,'The {noun} was {neg}.' -> negative,64,0,0.0
+roberta_head_tail,negated_positive,MFT,'The {noun} was not {pos}.' -> negative,128,0,0.0
+roberta_head_tail,negated_negative,MFT,'The {noun} was not {neg}.' -> positive (lenient: may be neutral),128,85,0.6641
+roberta_head_tail,contrast_neg_then_pos,MFT,"'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",64,0,0.0
+roberta_head_tail,contrast_pos_then_neg,MFT,"'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",64,0,0.0
+roberta_head_tail,typos_10pct,INV,swap adjacent letters in 10% of words; prediction should not flip,1000,13,0.013
+roberta_head_tail,neutral_sentence,INV,append an irrelevant sentence; prediction should not flip,1000,5,0.005
+roberta_head_tail,intensifier,DIR,add very/really/...; expected-class prob must not drop > 0.1,128,0,0.0
+roberta_head_tail,add_negative_sentence,DIR,P(positive) must not rise by more than 0.1,501,1,0.002
+roberta_head_tail,add_positive_sentence,DIR,P(positive) must not fall by more than 0.1,499,0,0.0
+deberta,simple_positive,MFT,'The {noun} was {pos}.' -> positive,64,0,0.0
+deberta,simple_negative,MFT,'The {noun} was {neg}.' -> negative,64,0,0.0
+deberta,negated_positive,MFT,'The {noun} was not {pos}.' -> negative,128,0,0.0
+deberta,negated_negative,MFT,'The {noun} was not {neg}.' -> positive (lenient: may be neutral),128,16,0.125
+deberta,contrast_neg_then_pos,MFT,"'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",64,0,0.0
+deberta,contrast_pos_then_neg,MFT,"'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",64,0,0.0
+deberta,typos_10pct,INV,swap adjacent letters in 10% of words; prediction should not flip,1000,17,0.017
+deberta,neutral_sentence,INV,append an irrelevant sentence; prediction should not flip,1000,4,0.004
+deberta,intensifier,DIR,add very/really/...; expected-class prob must not drop > 0.1,128,0,0.0
+deberta,add_negative_sentence,DIR,P(positive) must not rise by more than 0.1,504,0,0.0
+deberta,add_positive_sentence,DIR,P(positive) must not fall by more than 0.1,496,0,0.0
+deberta_large,simple_positive,MFT,'The {noun} was {pos}.' -> positive,64,0,0.0
+deberta_large,simple_negative,MFT,'The {noun} was {neg}.' -> negative,64,0,0.0
+deberta_large,negated_positive,MFT,'The {noun} was not {pos}.' -> negative,128,19,0.1484
+deberta_large,negated_negative,MFT,'The {noun} was not {neg}.' -> positive (lenient: may be neutral),128,44,0.3438
+deberta_large,contrast_neg_then_pos,MFT,"'I expected the {noun} to be {neg}, but it was {pos}.' -> pos",64,0,0.0
+deberta_large,contrast_pos_then_neg,MFT,"'I expected the {noun} to be {pos}, but it was {neg}.' -> neg",64,0,0.0
+deberta_large,typos_10pct,INV,swap adjacent letters in 10% of words; prediction should not flip,1000,2,0.002
+deberta_large,neutral_sentence,INV,append an irrelevant sentence; prediction should not flip,1000,4,0.004
+deberta_large,intensifier,DIR,add very/really/...; expected-class prob must not drop > 0.1,128,0,0.0
+deberta_large,add_negative_sentence,DIR,P(positive) must not rise by more than 0.1,510,0,0.0
+deberta_large,add_positive_sentence,DIR,P(positive) must not fall by more than 0.1,490,0,0.0

@@ -1,0 +1,52 @@
+{
+  "model": "tfidf_lr_tuned",
+  "split": {
+    "protocol": "official",
+    "n_train": 22416,
+    "n_val": 2486,
+    "n_test": 24877,
+    "removed_train_duplicates": 98,
+    "removed_test_duplicates_of_train": 123,
+    "test_exact_duplicates_of_train": 0,
+    "test_reviews_with_movie_in_train": 23,
+    "test_share_with_movie_in_train": 0.0009
+  },
+  "grid_size": 36,
+  "train_seconds": 11.9,
+  "params": {
+    "max_features": 50000,
+    "ngram_min": 1,
+    "ngram_max": 2,
+    "stop_words": null,
+    "sublinear_tf": true,
+    "min_df": 2,
+    "C": 4.0,
+    "max_iter": 2000,
+    "random_state": 42
+  },
+  "val": {
+    "n": 2486,
+    "accuracy": 0.8925985518905873,
+    "precision": 0.8956310679611651,
+    "recall": 0.8891566265060241,
+    "f1": 0.8923821039903265,
+    "macro_f1": 0.8925981174307313,
+    "roc_auc": 0.958730004627697,
+    "log_loss": 0.27840714184834536,
+    "brier": 0.08194861136792293,
+    "ece": 0.051287841392724215
+  },
+  "test": {
+    "n": 24877,
+    "accuracy": 0.9027615870080797,
+    "precision": 0.9026676279740447,
+    "recall": 0.9034637588197563,
+    "f1": 0.9030655179322781,
+    "macro_f1": 0.9027606310577556,
+    "roc_auc": 0.9653064250458714,
+    "log_loss": 0.26048090515855804,
+    "brier": 0.07604536877982053,
+    "ece": 0.0573211105217703
+  },
+  "test_examples_per_second_cpu": 3619.5
+}

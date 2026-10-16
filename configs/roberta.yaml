@@ -1,0 +1,13 @@
+# RoBERTa-base (125M parameters).
+name: roberta
+model_name: roberta-base
+max_length: 512
+truncation: head
+learning_rate: 2.0e-5
+weight_decay: 0.01
+epochs: 2
+batch_size: 16
+eval_batch_size: 128
+warmup_ratio: 0.06
+seed: 42
+bf16: true

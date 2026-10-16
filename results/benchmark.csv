@@ -1,0 +1,8 @@
+model,n,seconds,reviews_per_second,hardware
+tfidf_lr_original,5000,1.2,4163.3,CPU
+tfidf_lr_tuned,5000,1.31,3809.6,CPU
+distilbert,5000,4.93,1014.5,NVIDIA A100 80GB PCIe
+roberta,5000,5.58,896.4,NVIDIA A100 80GB PCIe
+roberta_head_tail,5000,6.17,810.8,NVIDIA A100 80GB PCIe
+deberta,5000,12.75,392.2,NVIDIA A100 80GB PCIe
+deberta_large,5000,26.31,190.0,NVIDIA A100 80GB PCIe

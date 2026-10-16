@@ -1,0 +1,15 @@
+# TF-IDF + logistic regression tuned on the movie-grouped validation split.
+# The grid is searched exhaustively; the best setting is refit on the training split.
+name: tfidf_lr_tuned
+type: tfidf_lr
+params:
+  ngram_min: 1
+  ngram_max: 2
+  min_df: 2
+  max_iter: 2000
+  random_state: 42
+grid:
+  stop_words: [english, null]        # null keeps negations such as "not" and "never"
+  max_features: [10000, 50000, null] # null = full vocabulary (terms seen in >= 2 reviews)
+  sublinear_tf: [false, true]
+  C: [1.0, 4.0, 16.0]

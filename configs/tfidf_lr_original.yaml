@@ -1,0 +1,13 @@
+# TF-IDF + logistic regression with exactly the settings of the original notebook.
+name: tfidf_lr_original
+type: tfidf_lr
+params:
+  max_features: 10000
+  ngram_min: 1
+  ngram_max: 2
+  stop_words: english   # note: this list removes "not", "no", "never", ...
+  sublinear_tf: false
+  min_df: 1
+  C: 1.0
+  max_iter: 1000
+  random_state: 42
